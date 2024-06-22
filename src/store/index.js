@@ -1,4 +1,5 @@
 import {configureStore, createSlice} from "@reduxjs/toolkit";
+
 const songSlice = createSlice({
   name: "song",
   initialState: [],
@@ -16,6 +17,16 @@ const store = configureStore({
   reducer: {
     songs: songSlice.reducer,
   }
-})
+});
 
-console.log(store)
+const startingStore = store.getState();
+console.log(JSON.stringify(startingStore));
+
+store.dispatch({
+  type: 'song/addSong',
+  payload: 'New song!!',
+});
+
+const finalState = store.getState();
+console.log(JSON.stringify(finalState));
+
