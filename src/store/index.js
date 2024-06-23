@@ -28,5 +28,6 @@ store.dispatch({
 });
 
 const finalState = store.getState();
-console.log(JSON.stringify(finalState));
 
+export { store };
+export const {addSong} = songSlice.actions;

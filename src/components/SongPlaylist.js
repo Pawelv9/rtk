@@ -1,49 +1,51 @@
-import { createRandomMovie } from "../data";
+import { createRandomSong } from "../data";
+import {useDispatch} from "react-redux";
+import { addSong } from '../store'
 
-function MoviePlaylist() {
+function SongPlaylist() {
+  const dispatch = useDispatch();
+  // To Do:
+  // Get list of songs
+  const songPlaylist = [];
+
+  const handleSongAdd = (song) => {
+    dispatch(addSong(song));
+  };
+  const handleSongRemove = (song) => {
     // To Do:
-    // Get list of movies
-    const moviePlaylist = [];
+    // Remove song from list of songs
+  };
 
-    const handleMovieAdd = (movie) => {
-        // To Do:
-        // Add movie to list of movies
-    };
-    const handleMovieRemove = (movie) => {
-        // To Do:
-        // Remove movie from list of movies
-    };
-
-    const renderedMovies = moviePlaylist.map((movie) => {
-        return (
-            <li key={movie}>
-                {movie}
-                <button
-                    onClick={() => handleMovieRemove(movie)}
-                    className="button is-danger"
-                >
-                    X
-                </button>
-            </li>
-        );
-    });
-
+  const renderedSongs = songPlaylist.map((song) => {
     return (
-        <div className="content">
-            <div className="table-header">
-                <h3 className="subtitle is-3">Movie Playlist</h3>
-                <div className="buttons">
-                    <button
-                        onClick={() => handleMovieAdd(createRandomMovie())}
-                        className="button is-link"
-                    >
-                        + Add Movie to Playlist
-                    </button>
-                </div>
-            </div>
-            <ul>{renderedMovies}</ul>
-        </div>
+      <li key={song}>
+        {song}
+        <button
+          onClick={() => handleSongRemove(song)}
+          className="button is-danger"
+        >
+          X
+        </button>
+      </li>
     );
+  });
+
+  return (
+    <div className="content">
+      <div className="table-header">
+        <h3 className="subtitle is-3">Song Playlist</h3>
+        <div className="buttons">
+          <button
+            onClick={() => handleSongAdd(createRandomSong())}
+            className="button is-link"
+          >
+            + Add Song to Playlist
+          </button>
+        </div>
+      </div>
+      <ul>{renderedSongs}</ul>
+    </div>
+  );
 }
 
-export default MoviePlaylist;
+export default SongPlaylist;
