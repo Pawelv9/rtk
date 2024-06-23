@@ -19,15 +19,14 @@ const store = configureStore({
   }
 });
 
-const startingStore = store.getState();
-console.log(JSON.stringify(startingStore));
+// const startingStore = store.getState();
+// console.log(JSON.stringify(startingStore));
+//
+// store.dispatch(
+//   songSlice.actions.addSong("New Song")
+// );
 
-store.dispatch({
-  type: 'song/addSong',
-  payload: 'New song!!',
-});
-
-const finalState = store.getState();
+// const finalState = store.getState();
 
 export { store };
 export const {addSong} = songSlice.actions;
